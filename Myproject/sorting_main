@@ -1,0 +1,39 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+int main()
+
+{
+    double *temp_array;
+    int i1, user_choice;
+    char user_input[20];
+    //double *array_mem;
+    int length = 0;
+
+
+    /*********
+    this function By entering the integer from 1 to 9 : pick from input1~9.txt
+    ******/
+
+
+
+    user_choice = chooseFile();
+
+// this function will copy the user input file, and give it to readArrayFromFile to read and store the array in temp_array
+    sprintf(user_input, "input%d.txt", user_choice);
+printf("%s", user_input);
+    temp_array = readArrayFromFile(user_input, &length);
+
+    for(i1 =0; i1 < 10 ; i1++)
+        printf( "%.2lf  \n",temp_array[i1]);
+
+// bs_array sorts the array from the input temp_array
+    bs_array(temp_array, length);
+
+    writeArrayToFile("scores_output.txt",temp_array, length);
+
+    free(temp_array);
+    return 0;
+}
+
+
+/*=============================================================================*/
